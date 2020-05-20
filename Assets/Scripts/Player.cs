@@ -87,4 +87,9 @@ public class Player : MonoBehaviour
     {
         IsTouchingRightWall = false;
     }
+
+    public void EnableWallJump()
+    {
+        CanWallJump = true;
+    }
 }
