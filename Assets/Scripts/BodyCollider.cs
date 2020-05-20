@@ -10,11 +10,19 @@ public class BodyCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        TouchedEvent.Invoke();
+        if (collision.gameObject.CompareTag("Geometry"))
+        {
+            TouchedEvent.Invoke();
+        }
+               
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        ReleasedEvent.Invoke();
+        if (collision.gameObject.CompareTag("Geometry"))
+        {
+            ReleasedEvent.Invoke();
+        }
+        
     }
 }
