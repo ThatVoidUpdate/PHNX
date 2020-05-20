@@ -19,7 +19,7 @@ TagManager:
   - PlayerCollision
   - Player
   - Environment
-  - 
+  - PlayerDamage
   - 
   - 
   - 

@@ -17,11 +17,17 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private BoxCollider2D BodyCollider;
 
+    public float MaxHealth;
+    private float Health;
+
+    public float ThrowForce;
+
     // Start is called before the first frame update
     void Start()
     {
         BodyCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+        Health = MaxHealth;
     }
 
     // Update is called once per frame
@@ -91,5 +97,22 @@ public class Player : MonoBehaviour
     public void EnableWallJump()
     {
         CanWallJump = true;
+    }
+
+    public void TakeDamage(float amount, Vector3 DamageOrigin)
+    {
+        print("OOF");
+        Health -= amount;
+        if (Health <= 0)
+        {
+            Die();
+        }
+        Vector2 ThrowDirection = (transform.position - DamageOrigin).normalized;
+        rb.velocity = ThrowDirection * ThrowForce;
+    }
+
+    public void Die()
+    {
+
     }
 }

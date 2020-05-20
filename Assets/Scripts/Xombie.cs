@@ -24,16 +24,19 @@ public class Xombie : MonoBehaviour
 
     private bool GoingLeft = true;
 
+    private int layerMask;
+
     private void Start()
     {
         Health = MaxHealth;
         rb = GetComponent<Rigidbody2D>();
+        layerMask = LayerMask.GetMask("PlayerCollision", "Player");
     }
 
     public void FixedUpdate()
     {
-        bool canMoveLeft = !Physics2D.OverlapCircle(transform.position + LeftOffset, 0.1f) && Physics2D.OverlapCircle(transform.position + DownLeftOffset, 0.1f);
-        bool canMoveRight = !Physics2D.OverlapCircle(transform.position + RightOffset, 0.1f) && Physics2D.OverlapCircle(transform.position + DownRightOffset, 0.1f);
+        bool canMoveLeft = !Physics2D.OverlapCircle(transform.position + LeftOffset, 0.1f, layerMask) && Physics2D.OverlapCircle(transform.position + DownLeftOffset, 0.1f, layerMask);
+        bool canMoveRight = !Physics2D.OverlapCircle(transform.position + RightOffset, 0.1f, layerMask) && Physics2D.OverlapCircle(transform.position + DownRightOffset, 0.1f, layerMask);
 
         if (canMoveLeft && !canMoveRight && !GoingLeft)
         {
