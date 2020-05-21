@@ -52,7 +52,12 @@ public class Xombie : MonoBehaviour
 
     public void TakeDamage(float Damage)
     {
-        Health -= Damage;        
+        Health -= Damage;
+        if (Health <= 0)
+        {
+            Die();
+        }
+        print("akdhljksdns");
     }
 
     public void Die()

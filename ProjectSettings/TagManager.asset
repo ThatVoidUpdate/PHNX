@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Powerup
   - Geometry
+  - Xombie
   layers:
   - Default
   - TransparentFX
