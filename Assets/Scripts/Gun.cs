@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(AudioSource))]
 public class Gun : MonoBehaviour
 {
     public int MaxAmmo = 6;
@@ -17,6 +18,12 @@ public class Gun : MonoBehaviour
     public Camera MainCamera;
     public GameObject player;
     public Vector3 gunOffset;
+    private AudioSource source;
+
+    private void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -48,8 +55,7 @@ public class Gun : MonoBehaviour
         CurrentAmmo -= 1;
         UpdateUIAmmo.Invoke(CurrentAmmo);
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, Mathf.Infinity, layerMask: LayerMask.GetMask("PlayerCollision", "Player"));
-        
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, Mathf.Infinity, layerMask: LayerMask.GetMask("PlayerCollision", "Player"));        
 
         if (hit.collider != null && hit.collider.gameObject.CompareTag("Xombie"))
         {
@@ -58,7 +64,7 @@ public class Gun : MonoBehaviour
         Debug.DrawRay(transform.position, transform.right * 10, Color.green, 1);
 
         //play sound
-        print("Bang");
+        source.Play();
 
     }
 }

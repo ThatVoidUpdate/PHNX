@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(AudioSource))]
 public class Xombie : MonoBehaviour
 {
     public float Speed;
@@ -21,16 +22,23 @@ public class Xombie : MonoBehaviour
     private Vector3 RightOffset = new Vector2(0.52f, 0);
 
     private Rigidbody2D rb;
+    private AudioSource source;
 
     private bool GoingLeft = true;
 
     private int layerMask;
 
+    [Header("Sound EFfects")]
+    public AudioClip[] XombieAmbient;
+    public AudioClip[] XombieHurt;
+    public AudioClip[] XombieDeath;    
+
     private void Start()
     {
         Health = MaxHealth;
         rb = GetComponent<Rigidbody2D>();
-        layerMask = LayerMask.GetMask("PlayerCollision", "Player");
+        source = GetComponent<AudioSource>();
+        layerMask = LayerMask.GetMask("PlayerCollision", "Player");        
     }
 
     public void FixedUpdate()
@@ -57,15 +65,32 @@ public class Xombie : MonoBehaviour
         {
             Die();
         }
-        print("akdhljksdns");
+        else
+        {
+            AudioClip clip = XombieHurt[Random.Range(0, XombieHurt.Length)];
+            source.clip = clip;
+            source.Play();
+        }
     }
 
     public void Die()
     {
+        AudioClip clip = XombieDeath[Random.Range(0, XombieDeath.Length)];
+        source.clip = clip;
+        source.Play();
+        StartCoroutine(DestroySelf());
+
         if (Random.Range(0f,1f) < DropChance)
         {
             Instantiate(Drop, transform.position, Quaternion.identity);
         }
+        
+    }
+
+    IEnumerator DestroySelf()
+    {
+        //wait until the sound has finished playing before destroying the xombie
+        yield return new WaitForSeconds(source.clip.length);
         Destroy(this.gameObject);
     }
 }
