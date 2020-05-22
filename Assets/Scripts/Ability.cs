@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Ability
+public abstract class Ability : MonoBehaviour
 {
-    void OnUseKeyDown();
-    void OnUseKeyUp();
+    public AbilityObject SO;
+
+    public abstract void OnUseAbility();
+    public abstract void OnStopUseAbility();
 }
