@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Powerup : MonoBehaviour
+[RequireComponent(typeof(Collider2D))]
+public class AbilityPickup : MonoBehaviour
 {
-    public UnityEvent OnPickup; 
+    public AbilityList PlayerAbilities;
+    public AbilityObject GrantedAbility;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //The player is picking up a powerup
-            OnPickup.Invoke();
+            PlayerAbilities.Abilities.Add(GrantedAbility);
             Destroy(this.gameObject);
         }
     }

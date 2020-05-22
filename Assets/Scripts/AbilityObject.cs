@@ -10,6 +10,4 @@ public class AbilityObject : ScriptableObject
     [TextArea]
     public string Description;
     public Sprite Icon;
-    public MonoBehaviour AbilityScript;
-
 }
