@@ -502,6 +502,8 @@ MonoBehaviour:
   CanWallJump: 0
   MaxHealth: 5
   ThrowForce: 5
+  JumpControl: Jump
+  MoveControl: Horizontal
 --- !u!114 &6747914034302898949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd80130a46bfe934a8650eaebb1ee5a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AbilityControl: Jump
+  AbilityControl: Ability
 --- !u!114 &6747914034302898970
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
 
     public float ThrowForce;
 
+    [Header("Controls")]
+    public string JumpControl;
+    public string MoveControl;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,21 +41,21 @@ public class Player : MonoBehaviour
 
         if (IsGrounded)
         {
-            Horizontal = Input.GetAxis("Horizontal") * HorizontalSpeed;
+            Horizontal = Input.GetAxis(MoveControl) * HorizontalSpeed;
         }
         
         float Vertical = 0;
-        if (Input.GetAxis("Jump") == 1 && IsGrounded)
+        if (Input.GetAxis(JumpControl) == 1 && IsGrounded)
         {
             Vertical = JumpForce;
         }
-        else if (Input.GetAxis("Jump") == 1 && IsTouchingLeftWall && CanWallJump)
+        else if (Input.GetAxis(JumpControl) == 1 && IsTouchingLeftWall && CanWallJump)
         {
             //fire off at an up-right angle
             Horizontal = JumpForce / 2;
             Vertical = JumpForce / 2;
         }
-        else if (Input.GetAxis("Jump") == 1 && IsTouchingRightWall && CanWallJump)
+        else if (Input.GetAxis(JumpControl) == 1 && IsTouchingRightWall && CanWallJump)
         {
             //fire off at an up-left angle
             Horizontal = JumpForce / -2;
@@ -94,14 +98,8 @@ public class Player : MonoBehaviour
         IsTouchingRightWall = false;
     }
 
-    public void EnableWallJump()
-    {
-        CanWallJump = true;
-    }
-
     public void TakeDamage(float amount, Vector3 DamageOrigin)
     {
-        print("OOF");
         Health -= amount;
         if (Health <= 0)
         {
