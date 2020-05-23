@@ -23,8 +23,6 @@ public class AbilitySelection : MonoBehaviour
                 mono.enabled = false;
             }
         }
-
-        print(AbilityComponents);
     }
 
     // Update is called once per frame
@@ -32,7 +30,6 @@ public class AbilitySelection : MonoBehaviour
     {
         if (Input.GetAxis(AbilityControl) == 1 && OldInputState == 0)
         {
-            print("Using Ability");
             foreach (Ability ability in AbilityComponents)
             {
                 if (ability.enabled == true)
@@ -44,7 +41,6 @@ public class AbilitySelection : MonoBehaviour
         }
         else if (Input.GetAxis(AbilityControl) == 0 && OldInputState == 1)
         {
-            print("Un-using ability");
             foreach (Ability ability in AbilityComponents)
             {
                 if (ability.enabled == true)

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832554587fbf47a4495be7758be54abc, type: 3}
   m_Name: Gorse
   m_EditorClassIdentifier: 
-  Name: 
-  LatinName: 
-  Description: 
-  Icon: {fileID: 0}
-  AbilityScript: {fileID: 0}
+  Name: Gorse
+  LatinName: Ulex europaeus
+  Description: Allows you to utilise the explosive seed dispersal of gorse, and gain
+    extra jump height
+  Icon: {fileID: 21300000, guid: 286e2c4361fe8834fb74ee05ec1874e7, type: 3}

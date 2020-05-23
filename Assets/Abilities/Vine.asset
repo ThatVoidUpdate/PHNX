@@ -15,5 +15,4 @@ MonoBehaviour:
   Name: Vine
   LatinName: Vitis tiliifolia
   Description: 
-  Icon: {fileID: 0}
-  AbilityScript: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 286e2c4361fe8834fb74ee05ec1874e7, type: 3}

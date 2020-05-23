@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832554587fbf47a4495be7758be54abc, type: 3}
   m_Name: Blackberry
   m_EditorClassIdentifier: 
-  Name: 
-  LatinName: 
-  Description: 
-  Icon: {fileID: 0}
-  AbilityScript: {fileID: 0}
+  Name: Blackberry
+  LatinName: Rubus fruticosus
+  Description: Allows you to run at enemies and kill them
+  Icon: {fileID: 21300000, guid: 286e2c4361fe8834fb74ee05ec1874e7, type: 3}

@@ -5,5 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Custom/Ability List")]
 public class AbilityList : ScriptableObject
 {
-    public List<AbilityObject> Abilities = new List<AbilityObject>();
+    public List<AbilityObject> Abilities;
+
+    private void OnEnable()
+    {
+        Abilities = new List<AbilityObject>();
+    }
 }
