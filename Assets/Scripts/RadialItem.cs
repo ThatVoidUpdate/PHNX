@@ -11,23 +11,28 @@ public class RadialItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [HideInInspector]
     public Image image;
     public bool Selected = false;
+    public HoverText hover;
 
     private void Start()
     {
         image = GetComponent<Image>();
         image.sprite = Ability.Icon;
         image.color = Color.gray;
+        hover.UpdateText(Ability);
+        hover.gameObject.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         Selected = true;
         image.color = Color.white;
+        hover.gameObject.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         Selected = false;
         image.color = Color.gray;
+        hover.gameObject.SetActive(false);
     }
 }

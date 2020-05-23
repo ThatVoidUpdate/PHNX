@@ -12,6 +12,8 @@ public class RadialMenu : MonoBehaviour
 
     public AbilityList UnlockedAbilities;
 
+    public GameObject Background;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class RadialMenu : MonoBehaviour
         {
             item.gameObject.SetActive(false);
         }
+        Background.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,7 +44,8 @@ public class RadialMenu : MonoBehaviour
 
     void Show()
     {
-        //apply rotation (mouse location to world space, set vector3 fwd/right)
+        Background.SetActive(true);
+
         Vector3 mousePosition = Input.mousePosition;
         Vector3 Worldposition = MainCamera.ScreenToWorldPoint(mousePosition);
         transform.position = new Vector3(Worldposition.x, Worldposition.y, 0);
@@ -52,13 +56,13 @@ public class RadialMenu : MonoBehaviour
             {
                 item.gameObject.SetActive(true);
             }
-            
-            
         }
     }
 
     void Hide()
     {
+        Background.SetActive(false);
+
         foreach (RadialItem item in Items)
         {
             item.gameObject.SetActive(false);
@@ -68,6 +72,7 @@ public class RadialMenu : MonoBehaviour
                 item.Selected = false;
             }
             item.image.color = Color.gray;
+            item.hover.gameObject.SetActive(false);
         }
     }
 }
