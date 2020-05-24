@@ -38,7 +38,7 @@ public class Xombie : MonoBehaviour
         Health = MaxHealth;
         rb = GetComponent<Rigidbody2D>();
         source = GetComponent<AudioSource>();
-        layerMask = LayerMask.GetMask("PlayerCollision", "Player");        
+        layerMask = LayerMask.GetMask("PlayerCollision", "Enemy");        
     }
 
     public void FixedUpdate()

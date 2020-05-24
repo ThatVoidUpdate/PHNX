@@ -55,7 +55,7 @@ public class Gun : MonoBehaviour
         CurrentAmmo -= 1;
         UpdateUIAmmo.Invoke(CurrentAmmo);
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, Mathf.Infinity, layerMask: LayerMask.GetMask("PlayerCollision", "Player"));        
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, Mathf.Infinity, layerMask: LayerMask.GetMask("PlayerCollision", "Enemy"));
 
         if (hit.collider != null && hit.collider.gameObject.CompareTag("Xombie"))
         {
